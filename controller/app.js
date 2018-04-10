@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 var furniture = require('../model/furniture.js');
 //deklarasi model user
 var user =require('../model/user');
-//define routing or link api
+/*define routing or link api
 app.get('/api/category/:catid/furniture', function (req, res) {
  var catid = req.params.catid;
  furniture.getFurnitureByCat(catid, function (err, result) {
@@ -29,7 +29,7 @@ app.get('/api/category/:catid/furniture', function (req, res) {
  res.status(500).send(err);
  }
  });
-}),
+}),*/
 
 //user
 app.get('/api/user', function (req,res) {
