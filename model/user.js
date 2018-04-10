@@ -28,7 +28,7 @@ var userDB = {
         pool.getConnection(function (err, conn) {
             if(err){
                 console.log(err);
-                retrun callback(err, null);
+                return callback(err, null);
             }
             else{
                 console.log("Connected!");
