@@ -42,34 +42,34 @@ app.get('/api/user', function (req,res) {
    res.status(500).send(err);
   }
  })
-}),
+})
 
     //fucntion post aduser
     app.post('/api/user',urlencodedParser, jsonParser, function (req, res) {
      var useremail = req.body.useremail;
      var userpassword = req.body.userpassword;
      var name = req.body.name;
-
+     // user
      user.addUser(useremail, userpassword, name, function (err,result) {
       if(!err){
        console.log(result);
-       res.send(result.affectedRows + 'berhasil ditambahkan');
+       res.send(result.affectedRows + ' berhasil ditambahkan');
       }
       else{
        console.log(err);
        res.status(500).send(err.code);
       }
      })
-    }),
+    })
 
     //function delete
     app.delete('/api/user/:userid', function (req,res) {
      var userid = req.params.userid;
 
      user.deleteUser(userid, function (err, result) {
-         if(err){
+         if(!err){
              console.log(err);
-             res.send(result.affectedRows + 'berhasil dihapus');
+             res.send(result.affectedRows + ' berhasil dihapus');
          }
          else{
              console.log(err);
@@ -80,22 +80,22 @@ app.get('/api/user', function (req,res) {
 //end delete
 
 //fucntion post aduser
-app.post('/api/:userid',urlencodedParser, jsonParser, function (req, res) {
+app.post('/api/user/:userid',urlencodedParser, jsonParser, function (req, res) {
     var userpassword = req.body.userpassword;
     var name = req.body.name;
-    var userid = req.body.userid;
+    var userid = req.params.userid;
 
 
     user.updateUser(userpassword, name, userid, function (err,result) {
         if(!err){
             console.log(result);
-            res.send(result.affectedRows + 'reocrd berhasil diubah');
+            res.send(result.affectedRows + ' record berhasil diubah');
         }
         else{
             console.log(err);
             res.status(500).send(err.code);
         }
-    })
-}),
+    });
+});
 
 module.exports = app
