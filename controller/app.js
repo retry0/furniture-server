@@ -15,6 +15,8 @@ app.use(cor);
 app.use(express.static(path.join(__dirname, "../public")));
 //define model
 var furniture = require('../model/furniture.js');
+//deklarasi model user
+var user =require('../model/user');
 //define routing or link api
 app.get('/api/category/:catid/furniture', function (req, res) {
  var catid = req.params.catid;
@@ -28,4 +30,18 @@ app.get('/api/category/:catid/furniture', function (req, res) {
  }
  });
 });
+
+//user
+app.get('/api/user', function (req,res) {
+ user.getUser(function (err,result) {
+  if(!err){
+   res.send(result);
+  }
+  else{
+   console.log(err);
+   res.status(500).send(err);
+  }
+ })
+})
+
 module.exports = app
