@@ -3,7 +3,8 @@ var mysql = require('mysql');
 var dbconnect =mysql.createPool({
     host:"localhost",
     user:"root",
-    password: "furniture"
+    password: "",
+    database: "furniture"
 });
 
 module.exports = dbconnect
